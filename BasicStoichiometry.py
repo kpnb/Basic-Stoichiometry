@@ -161,6 +161,18 @@ def moleculesToMoles(molecules):
 	moles = molecules/avagadro
 	return moles
 
+def getGrams(entry_type_grams):
+	entry_type_grams = grams
+
+def getMoles(entry_type_moles):
+	entry_type_grams = grams
+
+def getAtoms(entry_type_atoms):
+	entry_type_atoms = atoms
+
+def calculate():
+	pass
+
 root = Tk()
 root.title("Stoichiometry Calculator")
 
@@ -172,17 +184,39 @@ mainframe.rowconfigure(0, weight=1)
 grams = StringVar()
 moles = StringVar()
 atoms = StringVar()
+elementName = StringVar()
+elementSelector = StringVar()
 
-entry = ttk.Entry(mainframe, width=7)
-entry.grid(column=2, row=1)
+spaceholder = Label(mainframe, text="This is a label").grid(row=0, column=0)
 
-entry_type_grams = ttk.Radiobutton(mainframe, text="grams", variable=grams, value=entry, command=sel)
-entry_type_grams.pack(anchor = W)
+amounttext = Label(mainframe, text="Enter the amount of your substance").grid(row=0, column=1)
+amounttext2 = Label(mainframe, text="and select your units").grid(row=1, column=1)
 
-entry_type_moles = ttk.Radiobutton(mainframe, text="moles", variable=moles, value=entry, command=sel)
-entry_type_moles.pack(anchor = W)
+entry = ttk.Entry(mainframe, width=7).grid(column=1, row=2)
 
-entry_type_atoms = ttk.Radiobutton(mainframe, text="atoms", variable=atoms, value=entry, command=sel)
-entry_type_atoms.pack(anchor = W)
+entry_type_grams = ttk.Radiobutton(mainframe, text="grams", variable=grams, value=entry, command=getGrams).grid(row=0, column=2)
+
+entry_type_moles = ttk.Radiobutton(mainframe, text="moles", variable=moles, value=entry, command=getMoles).grid(row=1, column=2)
+
+entry_type_atoms = ttk.Radiobutton(mainframe, text="atoms", variable=atoms, value=entry, command=getAtoms).grid(row=2, column=2)
+
+elementSelectorLabel = Label(mainframe, text="Select your atom:").grid(column=3, row=0)
+
+elementSelector = ttk.Combobox(mainframe, textvariable=elementName, values=elementlist).grid(column=3, row=2)
+
+equivalentLabel = Label(mainframe, text="is equivalent to").grid(column=0, row=4)
+
+resultLabel = Label(mainframe, text="result'll be here").grid(column=1, row=4)
+
+result_type_grams = ttk.Radiobutton(mainframe, text="grams", variable=grams, value=entry, command=getGrams).grid(row=3, column=2)
+
+result_type_moles = ttk.Radiobutton(mainframe, text="moles", variable=moles, value=entry, command=getMoles).grid(row=4, column=2)
+
+result_type_atoms = ttk.Radiobutton(mainframe, text="atoms", variable=atoms, value=entry, command=getAtoms).grid(row=5, column=2)
+
+calculate = ttk.Button(mainframe, text="Calculate", command=calculate).grid(column=3, row=7)
+#print elements[1].elementName
+#print elements
+#print elementlist
 
 root.mainloop()
