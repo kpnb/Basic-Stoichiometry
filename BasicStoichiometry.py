@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from Tkinter import *
 import ttk
 
@@ -134,10 +135,24 @@ for line in data.split('\n'):
  
     elements[line[2]] = Element(line[2], float(line[1])) #Creates a class for every element and stores each class in the elements list?? Maybe??
 
+=======
+class Element(object):
+	"""Element class"""
+	def __init__(self, elementName, molarMass):
+		self.elementName = elementName
+		self.molarMass = molarMass
+
+		
+hydrogen = Element("Hydrogen", 1.01)
+helium = Element("Helium", 4.00)
+lithium = Element("Lithium", 6.94)
+#This would continue until every element is listed in this format
+>>>>>>> 7a4161ca8ce29e780bf6a0fd153474a019e17cca
 
 avagadro = 6.022 * 10**23
 
 def gramsToMoles(grams, elementName):
+<<<<<<< HEAD
 	moles = float(grams)/elements[elementName].molarMass
 	return moles
 
@@ -220,3 +235,30 @@ calculate = ttk.Button(mainframe, text="Calculate", command=calculate).grid(colu
 #print elementlist
 
 root.mainloop()
+=======
+	moles = grams/elementName.molarMass
+	print moles
+
+def molesToGrams(moles, elementName):
+	grams = moles*elementName.molarMass
+	print grams
+
+def gramsToMolecules(grams, elementName):
+	molecules = (grams/elementName.molarMass) * avagadro
+	print molecules
+
+def moleculesToGrams(molecules, elementName):
+	grams = (molecules/avagadro) * elementName.molarMass
+	print grams
+
+def molesToMolecules(moles):
+	molecules = moles*avagadro
+	print molecules
+
+def moleculesToMoles(molecules):
+	moles = molecules/avagadro
+	print moles0
+
+gramsToMoles(10, hydrogen)
+#This line tests the function
+>>>>>>> 7a4161ca8ce29e780bf6a0fd153474a019e17cca
